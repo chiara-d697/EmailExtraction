@@ -17,8 +17,8 @@ const file = fs.readFileSync('test.txt', {encoding: 'utf8'});
 
 // REGEX solution
 
-const domain = new RegExp(/\w+@softwire\.com\W/);
+const domain = new RegExp(/\w+@softwire\.com\W/g);
 const test = new RegExp(/\w+@\w+\.\w+/g);
 
-console.log(file.match(domain));
+console.log(file.match(domain).length);
 
