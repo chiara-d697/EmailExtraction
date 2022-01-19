@@ -22,9 +22,8 @@ const file = fs.readFileSync('test.txt', {encoding: 'utf8'});
 const domain = new RegExp(/\w+@softwire\.com\W/g);
 const generic = new RegExp(/\w+@\w+.\w+(\.\w+)?/g);
 
-// console.log(file.match(domain).length);
 let results = file.match(generic)
-// console.log(results);
+
 
 let uniqueAddresses = {};
 
@@ -32,11 +31,8 @@ for (address of results){
     uniqueDomain = address.split('@')[1];
     uniqueAddresses[uniqueDomain] ? uniqueAddresses[uniqueDomain] += 1 : uniqueAddresses[uniqueDomain] = 1
     }
-// console.log(uniqueAddresses);
 
 let resultsArray = []
-
-// console.log(Object.keys(uniqueAddresses));
 
 Object.keys(uniqueAddresses).forEach(address => {
     resultsArray.push(
@@ -47,8 +43,6 @@ Object.keys(uniqueAddresses).forEach(address => {
     )
    
 });
-
-// console.log(resultsArray);
 
 const sortedResults = resultsArray.sort((a, b) => b.count - a.count);
 console.log(sortedResults);
