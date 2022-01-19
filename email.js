@@ -1,6 +1,8 @@
 const fs = require('fs');
+const ps = require('prompt-sync');
 
 const file = fs.readFileSync('test.txt', {encoding: 'utf8'});
+
 
 // console.log(file.length);
 
@@ -18,7 +20,7 @@ const file = fs.readFileSync('test.txt', {encoding: 'utf8'});
 // REGEX solution
 
 const domain = new RegExp(/\w+@softwire\.com\W/g);
-const generic = new RegExp(/\w+@\w+.\w+.?(\w+)?/g);
+const generic = new RegExp(/\w+@\w+.\w+(\.\w+)?/g);
 
 // console.log(file.match(domain).length);
 let results = file.match(generic)
@@ -30,7 +32,7 @@ for (address of results){
     uniqueDomain = address.split('@')[1];
     uniqueAddresses[uniqueDomain] ? uniqueAddresses[uniqueDomain] += 1 : uniqueAddresses[uniqueDomain] = 1
     }
-console.log(uniqueAddresses);
+// console.log(uniqueAddresses);
 
 let resultsArray = []
 
@@ -50,3 +52,14 @@ Object.keys(uniqueAddresses).forEach(address => {
 
 const sortedResults = resultsArray.sort((a, b) => b.count - a.count);
 console.log(sortedResults);
+
+
+// user Input
+const prompt = ps();
+
+let userChoice = prompt("Please specify a frequency:");
+let userNumChoice = +userChoice;
+console.log(sortedResults.filter(domain => {
+    return domain.count >= userNumChoice;
+})
+);
