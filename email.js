@@ -31,3 +31,22 @@ for (address of results){
     uniqueAddresses[uniqueDomain] ? uniqueAddresses[uniqueDomain] += 1 : uniqueAddresses[uniqueDomain] = 1
     }
 console.log(uniqueAddresses);
+
+let resultsArray = []
+
+// console.log(Object.keys(uniqueAddresses));
+
+Object.keys(uniqueAddresses).forEach(address => {
+    resultsArray.push(
+        {
+            address: address,
+            count : uniqueAddresses[address],
+        }
+    )
+   
+});
+
+// console.log(resultsArray);
+
+const sortedResults = resultsArray.sort((a, b) => b.count - a.count);
+console.log(sortedResults);
