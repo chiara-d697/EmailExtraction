@@ -31,3 +31,11 @@ for (address of results){
     uniqueAddresses[uniqueDomain] ? uniqueAddresses[uniqueDomain] += 1 : uniqueAddresses[uniqueDomain] = 1
     }
 console.log(uniqueAddresses);
+
+// put numbers in array and sorted, but they're no longer attached to their keys
+let numArr = [];
+for(let key in uniqueAddresses) {
+    numArr.push(uniqueAddresses[key]);
+}
+
+const orderedAddresses = numArr.sort((a,b) => b-a);
